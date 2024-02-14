@@ -1,2 +1,3 @@
 # capstone-deployment-files
-Deployment files for 4902 Capstone project
+Files used for deploying the capstone project server.
+
