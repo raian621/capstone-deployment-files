@@ -12,7 +12,7 @@
 # We could set up some elaborate secrets sharing infrastructure,
 # but I really can't be bothered to do that right now, and this
 # way is the simplest secure-ish way to pass the API key.
-read -p "OpenAI API key: " OPEN_API_KEY
+read -p "OpenAI API key: " OPENAI_API_KEY
 export OPENAI_API_KEY=$OPENAI_API_KEY
 
 # update docker containers used for the deployment:
