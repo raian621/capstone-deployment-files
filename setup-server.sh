@@ -2,12 +2,16 @@
 
 # This script sets up a server to host the backend of the capstone project.
 # It needs to be run with sudo privileges.
+#
+# This script should only have to be ran once when you first log into a freshly
+# allocated server
 
 source /etc/*-release
 
 aptInstallDeps() {
     apt update
     apt install docker docker.io docker-compose nginx -y
+    snap install --classic certbot
 }
 
 setupDocker() {
@@ -21,6 +25,10 @@ setupFirewallUFW() {
     ufw enable
 }
 
+setupCertbot() {
+    certbot --nginx -n --agree-tos -d api.transcribro.com -m ryan.bell62101@gmail.com
+}
+
 setupNginx() {
     cp ./transcribro.conf /etc/nginx/sites-available/
     ln -sf /etc/nginx/sites-available/transcribro.conf /etc/nginx/sites-enabled
@@ -31,6 +39,7 @@ if [[ $DISTRIB_ID == 'Ubuntu' ]]; then
     aptInstallDeps
     setupDocker
     setupFirewallUFW
+    setupCertbot
     setupNginx
 else
     echo "Linux distribution '$DISTRIB_ID' unsupported, please install dependencies and configure server manually."
