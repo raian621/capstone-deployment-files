@@ -23,7 +23,7 @@ setupFirewallUFW() {
 
 setupNginx() {
     cp ./transcribro.conf /etc/nginx/sites-available/
-    ln -sf /etc/nginx/sites-enabled
+    ln -sf /etc/nginx/sites-available/transcribro.conf /etc/nginx/sites-enabled
     systemctl restart nginx.service
 }
 
