@@ -8,5 +8,5 @@ services:
       - APP_PORT=8000
       - APP_CLIENT_URL=alpha.transcribro.com
       - APP_LOG_FILE=server.log
-      - OPEN_API_KEY=$OPEN_API_KEY
+      - OPENAI_API_KEY=$OPENAI_API_KEY
     restart: unless-stopped
